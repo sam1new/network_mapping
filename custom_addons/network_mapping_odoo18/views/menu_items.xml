@@ -5,7 +5,7 @@
             name="Network Mapping" 
             action="patch_panel_action_6th_cab1_new" 
             sequence="10"
-            groups = "network_mapping_odoo18.group_networkmap_user,network_mapping.group_networkmap_admin"
+            groups = "network_mapping_odoo18.group_networkmap_user,network_mapping_odoo18.group_networkmap_admin"
         />
 
         <menuitem 
