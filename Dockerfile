@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Start Odoo
-CMD python odoo-bin -i base --db_host=$DB_HOST --db_user=$DB_USER --db_password=$DB_PASSWORD --database=$DB_NAME --http-port=8069
+CMD python odoo-bin --addons-path=/app/custom_addons,/app/addons,/app/odoo/addons --db_host=$DB_HOST --db_user=$DB_USER --db_password=$DB_PASSWORD --database=$DB_NAME --http-port=8069
