@@ -22,7 +22,7 @@ odoo/filestore
 # maintenance migration scripts
 odoo/addons/base/maintenance
 # window installation config file
-/odoo.conf
+odoo.conf
 
 # generated for windows installer?
 install/win32/*.bat
@@ -50,3 +50,17 @@ package.json
 /man/
 /share/
 /src/
+
+# Virtual Environments (Standard names)
+venv/
+env/
+ENV/
+.env
+
+# IDE Settings
+.vscode/
+.idea/
+
+# Extra Odoo/Python cleanup
+*.log
+.python-version
