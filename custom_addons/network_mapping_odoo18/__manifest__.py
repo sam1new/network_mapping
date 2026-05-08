@@ -20,36 +20,36 @@
     'demo' : [],
     'installable' : True,
     'application' : True,
-    'icon': '/network_mapping/static/description/iconv2.png',    
+    'icon': '/network_mapping_odoo18/static/description/iconv2.png',    
     'assets' : {
         'web.assets_backend': [
-            'network_mapping/static/src/scss/variables.scss',
+            'network_mapping_odoo18/static/src/scss/variables.scss',
 
-            'network_mapping/static/src/scss/networkmap_dark_mode_port_modal.scss',
-            'network_mapping/static/src/scss/networkmap_light_mode_port_modal.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_dark_mode_port_modal.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_light_mode_port_modal.scss',
 
-            'network_mapping/static/src/scss/networkmap_light_mode_panel_modal.scss',
-            'network_mapping/static/src/scss/networkmap_dark_mode_panel_modal.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_light_mode_panel_modal.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_dark_mode_panel_modal.scss',
 
-            'network_mapping/static/src/scss/networkmap_dark_mode_main.scss',
-            'network_mapping/static/src/scss/networkmap_light_mode_main.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_dark_mode_main.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_light_mode_main.scss',
 
-            'network_mapping/static/src/scss/networkmap_dark_mode_confirmation_dialog.scss',
-            'network_mapping/static/src/scss/networkmap_light_mode_confirmation_dialog.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_dark_mode_confirmation_dialog.scss',
+            'network_mapping_odoo18/static/src/scss/networkmap_light_mode_confirmation_dialog.scss',
             
-            'network_mapping/static/src/components/networkmap_main.xml',
-            'network_mapping/static/src/components/networkmap_port_modal.xml',
-            'network_mapping/static/src/components/networkmap_vlan_modal.xml',
-            'network_mapping/static/src/components/networkmap_panel_modal.xml',
+            'network_mapping_odoo18/static/src/components/networkmap_main.xml',
+            'network_mapping_odoo18/static/src/components/networkmap_port_modal.xml',
+            'network_mapping_odoo18/static/src/components/networkmap_vlan_modal.xml',
+            'network_mapping_odoo18/static/src/components/networkmap_panel_modal.xml',
 
             
 
-            'network_mapping/static/src/components/networkmap_port_modal.js',
+            'network_mapping_odoo18/static/src/components/networkmap_port_modal.js',
             
-            'network_mapping/static/src/components/networkmap_vlan_modal.js',
+            'network_mapping_odoo18/static/src/components/networkmap_vlan_modal.js',
            
-            'network_mapping/static/src/components/networkmap_panel_modal.js',
-            'network_mapping/static/src/components/networkmap_main.js',
+            'network_mapping_odoo18/static/src/components/networkmap_panel_modal.js',
+            'network_mapping_odoo18/static/src/components/networkmap_main.js',
             
         ],
     },
