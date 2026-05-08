@@ -5,8 +5,8 @@
     'category' : 'DevOps',
     'depends' : [ 'base', 'bus', 'hr'],
     'data' : [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
 
         'data/networkmap_data.xml',
 
