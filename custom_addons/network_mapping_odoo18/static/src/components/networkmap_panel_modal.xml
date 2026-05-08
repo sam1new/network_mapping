@@ -1,0 +1,49 @@
+<t t-name="network_map_main.PanelModal" owl="1">
+    <div class="modal d-block nm-panel-modal" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content border-3">
+                <div class="nm-panel-modal-header px-3 mt-3">
+                    <div class="form-group">
+                            <label class="form-label">Panel Info</label>
+                        </div>
+                    <button type="button" class="close" t-on-click="props.close" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="nm-panel-modal-body">
+                    <form>
+                        <div class="form-label mb-3">
+                            <label for="ipInput">IP Address</label>
+                            <input id="ipInput" type="text" class="form-control" t-model="state.ip" autocomplete="off"/>
+                        </div>
+                        <div class="form-label mb-3">
+                            <label for="typeInput">Device Type</label>
+                            <input id="typeInput" type="text" class="form-control" t-model="state.type" autocomplete="off"/>
+                        </div>
+                        <div class="form-label mb-3">
+                            <label for="serialInput">Serial Number</label>
+                            <input id="serialInput" type="text" class="form-control" t-model="state.serial" autocomplete="off"/>
+                        </div>
+                        <t t-if="state.error">
+                            <div class="alert alert-danger mt-3" role="alert">
+                                <t t-esc="state.error"/>
+                            </div>
+                        </t>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn nm-btn-secondary" t-on-click="props.close" t-att-disabled="state.saving">Cancel</button>
+                    <button type="button" class="btn nm-btn-primary" t-on-click="save" t-att-disabled="state.saving">
+                        <t t-if="state.saving">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Saving...
+                        </t>
+                        <t t-else="">
+                            Save changes
+                        </t>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>

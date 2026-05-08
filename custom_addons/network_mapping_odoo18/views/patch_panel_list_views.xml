@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_patch_panel_list" model="ir.ui.view">
+        <field name="name">patch.panel.list</field>
+        <field name="model">patch.panel</field>
+        <field name="arch" type="xml">
+            <list string="Patch Panels" multi_edit="1" delete="1">
+                <field name="panel_number" readonly="1"/>
+                <field name="floor_id" optional="show"/>
+                <field name="cabinet_id" optional="show"/>
+                <field name="name"/>
+                <field name="ip_address"/>
+                <field name="device_type"/>
+                <field name="serial_number"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_patch_panel_form" model="ir.ui.view">
+    <field name="name">patch.panel.form</field>
+    <field name="model">patch.panel</field>
+    <field name="arch" type="xml">
+        <form string="Patch Panel">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="panel_number" readonly="1"/>
+                        <field name="floor_id"/>
+                        <field name="cabinet_id" domain="[('floor_id', '=', floor_id)]"/>
+                        <field name="name" readonly="1"/>
+                        <field name="port_count"/>
+                    </group>
+                    <group>
+                        <field name="ip_address"/>
+                        <field name="device_type"/>
+                        <field name="serial_number"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <record id="action_patch_panel_list" model="ir.actions.act_window">
+        <field name="name">All Patch Panels</field>
+        <field name="res_model">patch.panel</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_patch_quest_port_list" model="ir.ui.view">
+        <field name="name">patch.quest.port.list</field>
+        <field name="model">network.map.port</field>
+        <field name="arch" type="xml">
+            <list string="Ports" multi_edit="1">
+                <field name="panel_id"/>
+                <field name="port_number"/>
+                <field name="full_port_name"/>
+                <field name="status" widget="badge" 
+                       decoration-success="status == 'free'" 
+                       decoration-info="status == 'used'"/>
+                <field name="vlan_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_patch_quest_port_form" model="ir.ui.view">
+    <field name="name">patch.quest.port.form</field>
+    <field name="model">network.map.port</field>
+    <field name="arch" type="xml">
+        <form string="General &amp; Logs">
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="full_port_name" placeholder="e.g. PP1-D01"/>
+                    </h1>
+                </div>
+
+                <group>
+                    <group>
+                        <field name="panel_id"/>
+                        <field name="port_number"/>
+                        <field name="status" widget="radio" options="{'horizontal': true}"/>
+                    </group>
+                    <group>
+                        <field name="vlan_id"/>
+                    </group>
+                </group>
+
+                <notebook>
+                    <!-- GENERAL COMMENTS (Port Modal only) -->
+                    <page string="Activity Log" name="activity_log">
+                        <field name="general_comment_ids" 
+                        domain="[('is_hidden_in_ui', '=', False), '|', ('field_name', 'in', ['full_port_name', 'vlan_id']), ('field_name', '=', False)]">
+                        <list default_order="date desc">
+                            <field name="date" string="Date" readonly="1"/>
+                            <field name="user_name" string="Author"/>
+                            <field name="comment_text" string="Activity Details"/>
+                            <field name="field_name" column_invisible="True"/>
+                            <field name="is_hidden_in_ui" column_invisible="True"/>
+                        </list>
+                    </field>
+                    </page>
+
+               
+                    <page string="Workstation History" name="workstation_history">
+                        <field name="workstation_history_ids">
+                            <list default_order="date_replaced desc" delete="1">
+                                <field name="assigned_user" string="Assigned User"/>
+                                <field name="department" string="Department"/>
+                                <field name="date_added" string="Date Added"/>
+                                <field name="date_replaced" string="Date Replaced"/>
+                            </list>
+                        </field>
+                    </page>
+
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <record id="action_patch_quest_port_list" model="ir.actions.act_window">
+        <field name="name">All Port Records</field>
+        <field name="res_model">network.map.port</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'group_by': ['panel_id']}</field>
+    </record>
+
+    <record id="view_patch_quest_comment_list" model="ir.ui.view">
+    <field name="name">patch.quest.comment.list</field>
+    <field name="model">network.map.comment</field>
+    <field name="arch" type="xml">
+        <list string="History Logs" create="0">
+            <field name="date" string="Date/Time"/>
+            <field name="user_name" string="User"/>
+            
+            <field name="comment_text" string="Log Details"/> 
+            <field name="port_id" column_invisible="True"/>
+        </list>
+    </field>
+</record>
+
+</odoo>

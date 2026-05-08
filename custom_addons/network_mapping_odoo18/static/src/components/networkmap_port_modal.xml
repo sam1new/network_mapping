@@ -1,0 +1,158 @@
+<t t-name="network_map_main.PortModal" owl="1">
+    <div class="modal d-block patch-quest-modal-scoped" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content border-3">
+
+                <ul class="nav nav-tabs px-3 mt-3">
+                    <li class="nav-item fw-bold">
+                        <a class="nav-link" t-att-class="{active: state.currentTab === 'general'}" href="#" t-on-click.prevent="() => this.setTab('general')">PORT INFO</a>
+                    </li>
+                    <li class="nav-item fw-bold">
+                        <a class="nav-link" t-att-class="{active: state.currentTab === 'workstation'}" href="#" t-on-click.prevent="() => this.setTab('workstation')">WORKSTATION INFO</a>
+                    </li>
+                </ul>
+
+                <button type="button" class="close" t-on-click="props.close" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+
+                <div class="modal-body">
+                    <div t-if="state.currentTab === 'general'">
+                        <t t-if="props.deviceInfo">
+                            <div class="switch-port-number col-4 mb-3" style="font-size:medium;">
+                                <strong>SWITCH PORT NUMBER:</strong> <t t-esc="props.portNumber"/>
+                            </div>
+                            <div class="patch-panel-info p-3 mb-2">
+                                <div class="info-child row">
+                                    <div class="col-4"><strong>IP:</strong> <t t-esc="props.deviceInfo.ip || '—'"/></div>
+                                    <div class="col-4"><strong>Type:</strong> <t t-esc="props.deviceInfo.type || '—'"/></div>
+                                    <div class="col-4"><strong>Serial:</strong> <t t-esc="props.deviceInfo.serial || '—'"/></div>
+                                </div>
+                            </div>
+                        </t>
+
+                        <div class="port-vlan row mb-5">
+                            <div class="port-vlan2 col-md-8">
+                                <strong><label class="form-label">Port Label</label></strong>
+                                <div class="input-group">
+                                    <input type="text" t-model="state.prefix" class="form-control" placeholder="PP" />
+                                    <span class="input-group-text">-</span>
+                                    <input type="text" t-model="state.suffix" class="form-control" placeholder="D" style="margin-right:5px;"/>
+                                </div>
+                            </div>
+                            <div class="port-vlan3 col-md-4">
+                                <strong><label class="form-label">VLAN ID</label></strong>
+                                <input type="text" t-model="state.vlanId" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <strong><label class="recent-activity mb-2 form-label">COMMENTS</label></strong>
+                        <div class="comments-activity">
+                            <div class="mb-3">
+                                <textarea t-model="state.newText" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-end">
+                                <button class="btn nm-btn-primary" t-on-click="addComment" t-att-disabled="!state.newText">Add</button>
+                            </div>  
+
+                            <div class="mt-2 custom-scrollbar" style="max-height: 150px; overflow-y: auto;">
+                                <t t-foreach="recentComments" t-as="comment" t-key="comment.id">
+                                    <div class="log-line d-flex justify-content-between align-items-center nm-log-item">
+                                        <div class="log-line-child nm-log-text">
+                                            <span class="log-date"><t t-esc="(comment.date || '').replace('T',' ').slice(0,16)"/></span>
+                                            <span class="separator">|</span>
+                                            <span class="log-user"><strong><t t-esc="comment.user_name"/></strong></span>
+                                            <span class="separator">:</span>
+                                            <t t-if="state.editingCommentId === comment.id">
+                                                <div class="d-inline-flex align-items-start flex-grow-1 ms-2 edit-wrapper">
+                                                    <textarea class="form-control form-control-sm edit-input" t-model="state.editingText" t-on-keydown="(e) => e.key === 'Enter' &amp;&amp; !e.shiftKey &amp;&amp; this.saveEdit(comment)" rows="3"></textarea>
+                                                    <div class="edit-actions d-flex">
+                                                        <button class="btn btn-sm btn-save ms-1" t-on-click="() => this.saveEdit(comment)"><strong><span class="small">SAVE</span></strong></button>
+                                                        <button class="btn btn-sm btn-secondary ms-1" t-on-click="() => this.cancelEdit()"><span class="small"><i class="fa fa-times"/></span></button>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <span class="log-content"><t t-esc="comment.comment_text"/></span>
+                                                <t t-if="comment.can_edit">
+                                                    <button class="btn btn-edit p-0 ms-2" t-on-click="() => this.startEdit(comment)">Edit</button>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div t-if="recentSystemActivity.length > 0" class="history-preview mt-3">
+                            <h6 class="recent-activity mb-2 form-label">RECENT ACTIVITY</h6>
+                            <div class="comments-activity"> 
+                                <div class="custom-scrollbar" style="max-height: 150px; overflow-y: auto;">
+                                    <t t-foreach="recentSystemActivity" t-as="log" t-key="log.id || log_index">
+                                        <div class="log-line d-flex align-items-center nm-log-item mb-1">
+                                            <div class="log-line-child nm-log-text">
+                                                <span class="log-date"><t t-esc="(log.date || '').replace('T',' ').slice(0,16)"/></span>
+                                                <span class="separator">|</span>
+                                                <span class="log-user"><strong><t t-esc="log.user_name"/></strong></span>
+                                                <span class="separator">:</span>
+                                                <span class="log-content"><i><t t-esc="log.comment_text"/></i></span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div t-if="state.currentTab === 'workstation'">
+                        <div class="workstation-tab row g-3 p-3">
+                            <div class="ws-tab-parent col-md-6">
+                                <strong><label class="form-label">Employee</label></strong>
+                                <input type="text" t-model="state.assignedUser" class="form-control" />
+                            </div>
+                            <div class="ws-tab-parent col-md-6">
+                                <strong><label class="form-label">Department</label></strong>
+                                <input type="text" t-model="state.department" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div t-if="recentWorkstationActivity.length > 0" class="history-preview mt-3 px-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="recent-activity mb-0 form-label">WORKSTATION HISTORY</h6>
+                            </div>
+                            <div class="comments-activity"> 
+                                <div class="custom-scrollbar" style="max-height: 180px; overflow-y: auto;">
+                                    <t t-foreach="recentWorkstationActivity" t-as="ws" t-key="ws.id">
+                                        <div class="log-line d-flex align-items-center nm-log-item mb-1">
+                                            <div class="log-line-child nm-log-text">
+                                                <span class="log-date"><t t-esc="(ws.date || '').replace('T',' ').slice(0,16)"/></span>
+                                                <span class="separator">|</span>
+                                                <span class="log-user"><strong><t t-esc="ws.user_name"/></strong></span>
+                                                <span class="separator">:</span>
+                                                <span class="log-content"><i><t t-esc="ws.comment_text"/></i></span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <t t-if="state.error">
+                        <div class="alert alert-danger mt-3">
+                            <t t-esc="state.error"/>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" t-on-click="() => props.close()">Cancel</button>
+                    <button class="btn nm-btn-primary" t-on-click="() => this.save()" t-att-disabled="state.saving">
+                        <t t-if="state.saving"><i class="fa fa-spinner fa-spin me-1"/>Saving...</t>
+                        <t t-else="">Save Changes</t>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>

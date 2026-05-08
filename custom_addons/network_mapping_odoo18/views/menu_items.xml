@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+        <menuitem 
+            id="menu_patch_mapper_root" 
+            name="Network Mapping" 
+            action="patch_panel_action_6th_cab1_new" 
+            sequence="10"
+            groups = "network_mapping.group_networkmap_user,network_mapping.group_networkmap_admin"
+        />
+
+        <menuitem 
+            id="menu_6th_floor" 
+            name="6th Floor" 
+            parent="menu_patch_mapper_root" 
+            action="action_sixth_floor_panel_views"
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_9th_floor" 
+            name="9th Floor" 
+            action="patch_panel_action_9th_floor_new" 
+            parent="menu_patch_mapper_root" 
+            sequence="20"
+        />
+        <menuitem 
+            id="menu_9th_floor_server1" 
+            name="Server 1" 
+            action="patch_panel_action_9th_server1_new" 
+            parent="menu_9th_floor" 
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_9th_floor_server2" 
+            name="Server 2" 
+            action="patch_panel_action_9th_server2_new" 
+            parent="menu_9th_floor" 
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_10th_floor" 
+            name="10th Floor" 
+            parent="menu_patch_mapper_root" 
+            action="action_tenth_floor_panel_views"
+            sequence="30"
+        />
+        <menuitem 
+            id="menu_16th_floor" 
+            name="16th Floor" 
+            action="patch_panel_action_16th_floor_new" 
+            parent="menu_patch_mapper_root" 
+            sequence="40"
+        />
+        
+        <menuitem 
+            id="menu_6th_floor_cab1" 
+            name="CAB1" 
+            action="patch_panel_action_6th_cab1_new" 
+            parent="menu_6th_floor" 
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_6th_floor_cab2" 
+            name="CAB2" 
+            action="patch_panel_action_6th_cab2_new" 
+            parent="menu_6th_floor" 
+            sequence="20"
+        />
+        
+        <menuitem 
+            id="menu_10th_floor_room10" 
+            name="ROOM10" 
+            action="patch_panel_action_10th_room10_new" 
+            parent="menu_10th_floor" 
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_10th_floor_room6" 
+            name="ROOM6" 
+            action="patch_panel_action_10th_room6_new"
+            parent="menu_10th_floor" 
+            sequence="20"
+        />
+        <menuitem 
+            id="menu_10th_floor_room8" 
+            name="ROOM8" 
+            action="patch_panel_action_10th_room8_new"
+            parent="menu_10th_floor" 
+            sequence="30"
+        />
+
+        <menuitem 
+            id="menu_reports_root" 
+            name="Reports" 
+            parent="menu_patch_mapper_root" 
+            sequence="80"
+        />
+        <menuitem 
+            id="menu_patch_panel_list" 
+            name="Patch Panels" 
+            action="action_patch_panel_list"
+            parent="menu_reports_root" 
+            sequence="40"
+        />
+
+        <menuitem 
+            id="menu_patch_quest_port_list" 
+            name="Patch Panel Ports" 
+            action="action_patch_quest_port_list"
+            parent="menu_reports_root" 
+            sequence="50"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+
+    <record id="action_tenth_floor_panel_views" model="ir.actions.client">
+        <field name="name">Patch Panels Trial</field>
+        <field name="tag">owl.network_map_main</field>
+    </record>
+
+    <record id="patch_panel_action_10th_room10_new" model="ir.actions.client">
+        <field name="name">10th Floor - ROOM10</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '10th Floor', 'cab': 'ROOM10'}"/>
+    </record>
+
+        <record id="patch_panel_action_10th_room6_new" model="ir.actions.client">
+        <field name="name">10th Floor - ROOM6</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '10th Floor', 'cab': 'ROOM6'}"/>
+    </record>
+
+        <record id="patch_panel_action_10th_room8_new" model="ir.actions.client">
+        <field name="name">10th Floor - ROOM8</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '10th Floor', 'cab': 'ROOM8'}"/>
+    </record>
+</odoo>

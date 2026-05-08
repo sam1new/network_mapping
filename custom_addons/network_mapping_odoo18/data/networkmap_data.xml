@@ -1,0 +1,401 @@
+<odoo>
+  <data noupdate="1">
+
+    <!-- ==== Floors ==== -->
+    <record id="floor_6f" model="network.map.floor">
+      <field name="name">6th Floor</field>
+    </record>
+    <record id="floor_9f" model="network.map.floor">
+      <field name="name">9th Floor</field>
+    </record>
+    <record id="floor_10f" model="network.map.floor">
+      <field name="name">10th Floor</field>
+    </record>
+    <record id="floor_16f" model="network.map.floor">
+      <field name="name">16th Floor</field>
+    </record>
+
+    <!-- ==== Cabinets (unique per floor) ==== -->
+    <!-- 6th Floor -->
+    <record id="cab_6f_cab1" model="network.map.cabinet">
+      <field name="name">CAB1</field>
+      <field name="floor_id" ref="floor_6f"/>
+    </record>
+    <record id="cab_6f_cab2" model="network.map.cabinet">
+      <field name="name">CAB2</field>
+      <field name="floor_id" ref="floor_6f"/>
+    </record>
+
+    <!-- 9th Floor -->
+    <record id="cab_9f_server1" model="network.map.cabinet">
+      <field name="name">Server 1</field>
+      <field name="floor_id" ref="floor_9f"/>
+    </record>
+    <record id="cab_9f_server2" model="network.map.cabinet">
+      <field name="name">Server 2</field>
+      <field name="floor_id" ref="floor_9f"/>
+    </record>
+
+    <!-- 10th Floor -->
+    <record id="cab_10f_room10" model="network.map.cabinet">
+      <field name="name">ROOM10</field>
+      <field name="floor_id" ref="floor_10f"/>
+    </record>
+    <record id="cab_10f_room6" model="network.map.cabinet">
+      <field name="name">ROOM6</field>
+      <field name="floor_id" ref="floor_10f"/>
+    </record>
+    <record id="cab_10f_room8" model="network.map.cabinet">
+      <field name="name">ROOM8</field>
+      <field name="floor_id" ref="floor_10f"/>
+    </record>
+
+    <!-- 16th Floor -->
+    <record id="cab_16f_default" model="network.map.cabinet">
+      <field name="name">16th floor</field>
+      <field name="floor_id" ref="floor_16f"/>
+    </record>
+
+    <!-- ==== Panels: use floor_id / cabinet_id and ref ==== -->
+    <!-- 6F CAB1 -->
+    <record id="panel_cab1_1" model="patch.panel">
+      <field name="name">CAB1 - P1</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.50</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2392GTQ</field>
+    </record>
+    <record id="panel_cab1_2" model="patch.panel">
+      <field name="name">CAB1 - P2</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.51</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18000830</field>
+    </record>
+    <record id="panel_cab1_3" model="patch.panel">
+      <field name="name">CAB1 - P3</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.52</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2392GVH</field>
+    </record>
+    <record id="panel_cab1_4" model="patch.panel">
+      <field name="name">CAB1 - P4</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.53</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2392GUN</field>
+    </record>
+    <record id="panel_cab1_5" model="patch.panel">
+      <field name="name">CAB1 - P5</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">5</field>
+      <field name="ip_address">10.0.1.54</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2392H15</field>
+    </record>
+    <record id="panel_cab1_6" model="patch.panel">
+      <field name="name">CAB1 - P6</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab1"/>
+      <field name="panel_number">6</field>
+      <field name="ip_address">10.0.1.55</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16001278</field>
+    </record>
+
+    <!-- 6F CAB2 -->
+    <record id="panel_cab2_1" model="patch.panel">
+      <field name="name">CAB2 - P1</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.56</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392GXD</field>
+    </record>
+    <record id="panel_cab2_2" model="patch.panel">
+      <field name="name">CAB2 - P2</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.57</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18001398</field>
+    </record>
+    <record id="panel_cab2_3" model="patch.panel">
+      <field name="name">CAB2 - P3</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.58</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392GVK</field>
+    </record>
+    <record id="panel_cab2_4" model="patch.panel">
+      <field name="name">CAB2 - P4</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.59</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392GY5</field>
+    </record>
+    <record id="panel_cab2_5" model="patch.panel">
+      <field name="name">CAB2 - P5</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">5</field>
+      <field name="ip_address">10.0.1.60</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392GYQ</field>
+    </record>
+    <record id="panel_cab2_6" model="patch.panel">
+      <field name="name">CAB2 - P6</field>
+      <field name="floor_id" ref="floor_6f"/>
+      <field name="cabinet_id" ref="cab_6f_cab2"/>
+      <field name="panel_number">6</field>
+      <field name="ip_address">10.0.1.61</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18000882</field>
+    </record>
+
+    <!-- 9F Server 1 -->
+    <record id="panel_server1_1" model="patch.panel">
+      <field name="name">Server 1 - P1</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.62</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16000064</field>
+    </record>
+    <record id="panel_server1_2" model="patch.panel">
+      <field name="name">Server 1 - P2</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.63</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16000130</field>
+    </record>
+    <record id="panel_server1_3" model="patch.panel">
+      <field name="name">Server 1 - P3</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.64</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18000949</field>
+    </record>
+    <record id="panel_server1_4" model="patch.panel">
+      <field name="name">Server 1 - P4</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.65</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16000131</field>
+    </record>
+    <record id="panel_server1_5" model="patch.panel">
+      <field name="name">Server 1 - P5</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">5</field>
+      <field name="ip_address">10.0.1.66</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18000966</field>
+    </record>
+    <record id="panel_server1_6" model="patch.panel">
+      <field name="name">Server 1 - P6</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server1"/>
+      <field name="panel_number">6</field>
+      <field name="ip_address">10.0.1.67</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2302064L</field>
+    </record>
+
+    <!-- 9F Server 2 -->
+    <record id="panel_server2_1" model="patch.panel">
+      <field name="name">Server 2 - P1</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server2"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.68</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16000131</field>
+    </record>
+    <record id="panel_server2_2" model="patch.panel">
+      <field name="name">Server 2 - P2</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server2"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.69</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE2301099U</field>
+    </record>
+    <record id="panel_server2_3" model="patch.panel">
+      <field name="name">Server 2 - P3</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server2"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.70</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EPTF18001499</field>
+    </record>
+    <record id="panel_server2_4" model="patch.panel">
+      <field name="name">Server 2 - P4</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server2"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.71</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392H3P</field>
+    </record>
+    <record id="panel_server2_5" model="patch.panel">
+      <field name="name">Server 2 - P5</field>
+      <field name="floor_id" ref="floor_9f"/>
+      <field name="cabinet_id" ref="cab_9f_server2"/>
+      <field name="panel_number">5</field>
+      <field name="ip_address">10.0.1.72</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE25020CET</field>
+    </record>
+
+    <!-- 10F ROOM10 -->
+    <record id="panel_room10_1" model="patch.panel">
+      <field name="name">ROOM10 - P1</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room10"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.73</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392H4Z</field>
+    </record>
+    <record id="panel_room10_2" model="patch.panel">
+      <field name="name">ROOM10 - P2</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room10"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.74</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16001282</field>
+    </record>
+    <record id="panel_room10_3" model="patch.panel">
+      <field name="name">ROOM10 - P3</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room10"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.75</field>
+      <field name="device_type">Cisco</field>
+      <field name="serial_number">JAE23392GVH</field>
+    </record>
+    <record id="panel_room10_4" model="patch.panel">
+      <field name="name">ROOM10 - P4</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room10"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.76</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16001291</field>
+    </record>
+
+    <!-- 10F ROOM6 -->
+    <record id="panel_room6_1" model="patch.panel">
+      <field name="name">ROOM6 - P1</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room6"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">.</field>
+      <field name="device_type">HP</field>
+      <field name="serial_number">Flat Switch</field>
+    </record>
+    <record id="panel_room6_2" model="patch.panel">
+      <field name="name">ROOM6 - P2</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room6"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.82</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248EFTF18001050</field>
+    </record>
+    <record id="panel_room6_3" model="patch.panel">
+      <field name="name">ROOM6 - P3</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room6"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.77</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">S248DF3X16001293</field>
+    </record>
+
+    <!-- 10F ROOM8 -->
+    <record id="panel_room8_1" model="patch.panel">
+      <field name="name">ROOM8 - P1</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room8"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.86</field>
+      <field name="device_type">FortiSwitch</field>
+      <field name="serial_number">.</field>
+    </record>
+    <record id="panel_room8_2" model="patch.panel">
+      <field name="name">ROOM8 - P2</field>
+      <field name="floor_id" ref="floor_10f"/>
+      <field name="cabinet_id" ref="cab_10f_room8"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">.</field>
+      <field name="device_type">.</field>
+      <field name="serial_number">-</field>
+    </record>
+
+    <!-- 16F -->
+    <record id="panel_16th_1" model="patch.panel">
+      <field name="name">16th Floor - P1</field>
+      <field name="floor_id" ref="floor_16f"/>
+      <field name="cabinet_id" ref="cab_16f_default"/>
+      <field name="panel_number">1</field>
+      <field name="ip_address">10.0.1.78</field>
+      <field name="device_type">Fortinet</field>
+      <field name="serial_number">S248DNTF24000009</field>
+    </record>
+    <record id="panel_16th_2" model="patch.panel">
+      <field name="name">16th Floor - P2</field>
+      <field name="floor_id" ref="floor_16f"/>
+      <field name="cabinet_id" ref="cab_16f_default"/>
+      <field name="panel_number">2</field>
+      <field name="ip_address">10.0.1.79</field>
+      <field name="device_type">Fortinet</field>
+      <field name="serial_number">S248DNTF24000010</field>
+    </record>
+    <record id="panel_16th_3" model="patch.panel">
+      <field name="name">16th Floor - P3</field>
+      <field name="floor_id" ref="floor_16f"/>
+      <field name="cabinet_id" ref="cab_16f_default"/>
+      <field name="panel_number">3</field>
+      <field name="ip_address">10.0.1.80</field>
+      <field name="device_type">Fortinet</field>
+      <field name="serial_number">S248DNTF24000011</field>
+    </record>
+    <record id="panel_16th_4" model="patch.panel">
+      <field name="name">16th Floor - P4</field>
+      <field name="floor_id" ref="floor_16f"/>
+      <field name="cabinet_id" ref="cab_16f_default"/>
+      <field name="panel_number">4</field>
+      <field name="ip_address">10.0.1.81</field>
+      <field name="device_type">Fortinet</field>
+      <field name="serial_number">S248DNTF24000012</field>
+    </record>
+
+  </data>
+</odoo>

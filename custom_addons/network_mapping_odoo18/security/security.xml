@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record model="ir.module.category" id="networkmap_user_access_indicator">
+        <field name="name">Network Mapping</field>
+        <field name="sequence">1</field>
+        </record>
+
+        <record id="group_networkmap_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="networkmap_user_access_indicator"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_networkmap_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="networkmap_user_access_indicator"/>
+        </record>
+    </data>
+</odoo>

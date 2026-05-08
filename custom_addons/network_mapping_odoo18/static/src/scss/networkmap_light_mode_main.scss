@@ -1,0 +1,518 @@
+/* =====================================================================
+   EPM PANEL — LIGHT MODE 
+===================================================================== */
+
+body.networkmap_body.light-mode {
+    .o_navbar,
+    .o_main_navbar {
+        background-color:  #b4c6e7 !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+        color: $dm-slot !important;
+
+        .o_navbar_apps_menu{
+          .o-dropdown.dropdown-toggle{
+            .oi.oi-apps{
+              color: $dm-slot !important;
+            }
+          }
+        }
+
+        .o_menu_brand{
+          color:$dm-slot !important;
+        }
+
+        .o_menu_systray{
+          .o-dropdown-toggle, .btn, i, span:not(.badge){
+            color: $dm-slot !important;
+          }
+
+        .fa-lg{
+          color: $dm-slot !important;
+        }
+        }
+    }
+
+    .o_menu_sections {
+        .o_nav_entry,
+        .o-dropdown-item,
+        .dropdown-item,
+        button.o-dropdown.dropdown-toggle {
+            color: $dm-slot !important;
+            background-color:  #b4c6e7  !important;
+
+            &:hover, &:focus, &:active, &.active {
+                color: $dm-slot !important;
+                background-color:  #b4c6e7 !important;
+            }
+        }
+    }
+
+    .o_action_manager:has(.nm-panel) {
+        .o_content:has(.nm-panel) {
+            background-color: $light-bg-workspace !important;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            border: none !important;
+            outline: none !important;
+        }
+    }
+
+    .nm-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background-color: $light-bg-workspace !important;
+    }
+
+    .nm-panel-grid {
+        flex: 1 1 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: $color-bg-main-light !important;
+        border: none !important;
+        gap: 15px;
+        overflow-x: auto;
+        overflow-y: auto;
+        padding: 20px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba($odoo-purple, 0.3) #f1f1f1 !important;
+
+        &::-webkit-scrollbar { width: 10px; height: 10px; }
+        &::-webkit-scrollbar-track { 
+            background: #f1f1f1 !important;
+            border-left: 1px solid rgba($odoo-purple, 0.1) !important; 
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba($odoo-purple, 0.3) !important;
+            border-radius: 4px !important;
+            border: 2px solid #f1f1f1 !important;
+            &:hover { 
+                background: $odoo-purple !important;
+                box-shadow: 0 0 10px $odoo-purple !important;
+            }
+        }
+    }
+
+    /* --- Toolbar --- */
+    .nm-toolbar {
+        flex: 0 0 auto;
+        padding: 15px 20px;
+        background-color: $color-bg-main-light !important;
+        border-bottom: 1px solid $color-border-cyber-light !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+        border-radius: 10px;
+
+        h1 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: $text-body !important;
+            text-shadow: none;
+            padding: 2px 0;
+        }
+
+        .input-group {
+            height: 34px;
+            border: 1px solid $color-border-cyber-light !important;
+            border-radius: 6px;
+            overflow: hidden;
+            &:focus-within {
+               box-shadow: 0 0 12px $odoo-purple !important;
+               border-color: lighten($odoo-purple, 10%);              
+              }
+
+            .input-group-text {
+                background-color: $color-bg-surface-light !important;
+                border: none !important;
+                color: $text-muted-light !important;
+            }
+        }
+
+        input.form-control {
+            background-color: $color-bg-main-light !important;
+            color: $dm-bg-1 !important;
+            caret-color: $dm-bg-1 !important;
+            border: none;
+            &::placeholder { 
+              color: $text-muted-light; 
+            }
+            &:focus {
+              outline: none;
+              box-shadow: none;
+              color: $dm-slot !important;
+            }
+
+        }
+
+        .form-select {
+            height: 34px;
+            width: 220px;
+            padding: 5px 10px;
+            border: 1px solid $color-border-cyber-light !important;
+            border-radius: 6px;
+            background-color: $color-bg-main-light !important;
+            color: $dm-slot !important;
+            cursor: pointer;
+            transition: color 120ms ease, box-shadow 120ms ease;
+
+
+            color: $dm-text-muted;.form-select {
+            color: $dm-text-muted;  
+            &:focus,
+            &:active,
+            &:focus-visible { color: $dm-slot; }
+            &:has(option[value=""]:checked) { color: $dm-slot; }
+            &:not(:focus):has(option[value]:checked) { color: $dm-slot; } 
+          }
+
+            &:focus,
+            &:active,
+            &:focus-visible {
+              outline: none;
+              color: $dm-slot;              
+              box-shadow: 0 0 10px $odoo-purple;
+            }
+
+            /* Dropdown list items */
+            option {
+              color: $dm-slot;              
+            }
+                  }
+              }
+
+    /* --- Layout Container --- */
+    .o-patch-panel-layout {
+        display: inline-flex;
+        align-items: stretch;
+        width: max-content;
+        gap: 0;
+        border: 1px solid $color-border-cyber-light !important;
+        background-color: $color-bg-main-light !important;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        outline: none !important;
+    }
+
+    .patch-panel-label-block {
+        flex: 0 0 150px;
+        background-color: $pp-surface !important;
+        border-right: 1px solid $pp-border !important;
+        padding: 15px;
+        font-size: 11px;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        
+        .label { color: $dm-bg-1 !important; }
+        .label-line {
+          strong { 
+          color: $text-strong !important; 
+          .ip-link{
+            color:inherit;
+            text-decoration: none;
+          }
+          .ip-link:hover{
+            text-decoration: underline;
+            color: var(--bs-primary, #bd67c9)
+          }
+        }}
+
+        &:hover {
+            background-color: $pp-surface-hover !important;
+            border-color: rgba($dm-text, 0.75) !important;
+            box-shadow: 0 0 12px rgba($dm-text, 0.35) !important;
+        }
+
+          background: $dm-slot repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.05) 3px
+          );
+    }
+
+    .o-patch-panel {
+        flex: 0 0 auto;
+        width: max-content;
+        padding: 15px;
+    }
+
+    .patch-panel-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    /* --- Port Groups & Slots --- */
+    .patch-port-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 110px; 
+        flex: 0 0 110px;
+        padding: 0 2px;
+        box-sizing: border-box;
+
+        .d-flex.align-items-center {
+            width: 100%;
+            display: flex;
+            gap: 0;
+            flex-wrap: nowrap;
+        }
+
+        .port-number {
+            font-weight: bold;
+            color: $text-body !important;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .port-number.bottom { margin-top: 5px; margin-bottom: 0; }
+    }
+    /* --- Cyberpunk Loading Icon --- */
+
+.cyber-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color-bg-main, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+  color:  #e5e7eb ;
+  font-family: 'Arial';
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba( #e5e7eb , 0.5);
+  position: relative;
+}
+
+/* The Spinner */
+.cyber-spinner {
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  .spinner-inner {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+
+  .outer-ring {
+    width: 100%;
+    height: 100%;
+    border-top-color:  #e5e7eb;
+    border-bottom-color:  #e5e7eb;
+    animation: spin-clockwise 1.5s linear infinite;
+    box-shadow: 0 0 15px rgba( #e5e7eb, 0.5);
+  }
+
+  .inner-ring {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    border-left-color: #bd67c9;
+    border-right-color: #bd67c9;
+    animation: spin-counter-clockwise 1s linear infinite;
+    box-shadow: 0 0 10px rgba(#bd67c9, 0.5);
+  }
+
+  .core {
+    width: 10px;
+    height: 10px;
+    top: 45%;
+    left: 45%;
+    background-color: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 30px #e5e7eb;
+    animation: pulse 1s ease-in-out infinite;
+  }
+}
+
+/* --- Cyber-Switch Toggle --- */
+.nm-theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .theme-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: $dm-text; 
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    border: 1px solid $dm-text; 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+    .switch-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  }
+
+  &.dark-active {
+    .theme-switch {
+      background: $dm-bg-1;
+      border: 1px solid $dm-surface;
+    }
+    .switch-thumb {
+      transform: translateX(30px);
+      background: #0d1117;
+    }
+  }
+}
+
+    .vlan_portslot_parent {
+        gap: 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .port-slot {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 35px;
+        min-width: 60px;
+        flex: 1;
+        background-color: $pp-surface !important;
+        border: 1px solid $pp-border !important;
+        border-radius: 0 3px 3px 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+        transition: all 0.2s ease;
+        color: $text-body !important;
+        box-shadow: none !important;
+
+        background: $dm-surface repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.05) 3px
+        );
+
+        .port-slot-label {
+            color: $text-body !important;
+            font-weight: normal;
+            font-size: 10px;
+            text-shadow: none !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &.has-comment {
+            box-shadow: 0 0 10px rgba(189, 103, 201, 0.45) !important;
+        }
+
+        &:hover {
+            background: rgba(189, 103, 201, 0.32) !important;
+            box-shadow: -2px 0 15px rgba(189, 103, 201, 0.55) !important;
+            border-right: 1px solid #bd67c9 !important;
+            z-index: 5;
+        }
+    }
+
+    .vlan-btn-side {
+        width: 35px;
+        height: 35px;
+        background-color: $pp-surface !important;
+        border: 1px solid $pp-border !important;
+        border-right: none !important;
+        display: grid;
+        place-items: center;
+        border-radius: 3px 0 0 3px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+            background: rgba(189, 103, 201, 0.32) !important;
+            box-shadow: -2px 0 15px rgba(189, 103, 201, 0.55) !important;
+            z-index: 5;
+        }
+
+        &.has-vlan-comment {
+            box-shadow: 0 0 10px rgba(189, 103, 201, 0.45) !important;
+        }
+    }
+
+    .vlan-label {
+        color: $dm-bg-1 !important;
+        font-size: 0.65rem;
+    }
+
+    .comment-indicator {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        width: 8px;
+        height: 8px;
+        background: rgba(189, 103, 201, 0.18) !important;
+        border: 2px solid #bd67c9 !important;
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(189, 103, 201, 0.45) !important;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .port-number-top-parent,
+    .port-number-bottom-parent {
+        background-color: #b4c6e7 !important;
+        border: none !important;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+  }

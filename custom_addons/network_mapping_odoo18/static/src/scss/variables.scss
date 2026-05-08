@@ -1,0 +1,56 @@
+/* ---------- SAFETY DEFAULTS (must be declared before any usage) ---------- */
+
+/* Already added earlier (keep them) */
+$light-bg-workspace: #f0f0f0 !default;
+$light-grid-color: rgba(0, 0, 0, 0.05) !default;
+$light-border: #000000 !default;
+
+/* Add missing neon/brand defaults used across your code */
+$neon-blue:   #00f3ff !default;
+$neon-purple: #ff8100 !default; /* you remapped this to orange for comments; keep or set to original if needed */
+$neon-red:    #ff003c !default;
+$odoo-blue:   #008784 !default;
+$odoo-purple: #71639e !default;
+
+/* In case any code references these text vars directly (light mode) */
+$text-dark:         #000000 !default;
+$text-muted-light:  #666666 !default;
+
+/* And make sure your dark palette shims exist too (if not in a shared variables file) */
+$dm-bg-1:         #262626 !default;
+$dm-surface:      #363636 !default;
+$dm-slot:         #5a5a5a !default;
+$dm-slot-darker:  #4a4a4a !default;
+$dm-border-strong:#ffffff !default;
+$dm-text:         #e5e7eb !default;
+$dm-text-muted:   #c7cbd1 !default;
+
+/* Light palette shims (if referenced) */
+$color-bg-main-light:      #ffffff !default;
+$color-bg-surface-light:   #fcfcfc !default;
+$color-border-cyber-light: #e0e0e0 !default;
+
+/* Dark remaps used by your code */
+$color-bg-main:      $dm-bg-1 !default;
+$color-bg-surface:   $dm-surface !default;
+$color-border-cyber: #4a4a4a !default;
+$color-comment:      #ff8100 !default;
+$color-dark-bg: $neon-blue;    
+
+$light-border:             #000000 !default;  
+$light-bg-workspace:       #f0f0f0 !default;
+$light-grid-color:         rgba(0, 0, 0, 0.05) !default;
+
+$text-dark:                #000000 !default;
+$text-muted-light:         #666666 !default;
+
+$color-comment-light:      $dm-bg-1 !default;     
+
+$odoo-purple:              #714B67 !default;
+$teal:                     #09d5e2 !default;
+
+$pp-surface:               #f3f4f6 !default;
+$pp-surface-hover:         #e5e7eb !default;
+$pp-border:                #d1d5db !default;
+$text-strong:              #111827 !default;
+$text-body:                #374151 !default;

@@ -1,0 +1,12 @@
+<odoo>
+    <record id="action_sixteenth_floor_panel_views" model="ir.actions.client">
+            <field name="name">Patch Panels Trial</field>
+            <field name="tag">owl.network_map_main</field>
+    </record>
+    
+    <record id="patch_panel_action_16th_floor_new" model="ir.actions.client">
+        <field name="name">16th Floor</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '16th Floor', 'cab': '16th floor'}"/>
+    </record>
+</odoo>

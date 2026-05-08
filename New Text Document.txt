@@ -1,0 +1,15 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Odoo specific
+*.log
+odoo.conf
+
+# IDE settings
+.vscode/

@@ -1,0 +1,73 @@
+/* ---------------------------------------------------------
+   DARK MODE — CONFIRMATION DIALOG 
+--------------------------------------------------------- */
+
+body.nm-confirmation-dialog:not(.light-mode) {
+
+    .modal-content {
+        background-color: $dm-bg-1 !important;
+        border: 3px solid rgba($dm-text, 0.5) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+
+        .modal-header {
+            background: $dm-bg-1 !important;
+            border-bottom: none !important;
+            
+            .modal-title {
+                color: $dm-text !important;
+            }
+        }
+
+        .modal-body {
+            padding: 25px !important;
+            background-color: $dm-bg-1 !important;
+            color: $dm-text !important;
+            text-align: left !important;
+            white-space: pre-wrap !important;
+        }
+
+        .modal-footer {
+            background-color: $dm-bg-1 !important;
+            border-top: none !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+            gap: 0.5rem;
+
+            .btn-primary {
+                order: 2;
+                background: $dm-surface !important;
+                border: 1px solid $dm-surface !important;
+                color: $dm-slot !important;
+                font-family: 'Arial', sans-serif;
+                font-weight: bold;
+                font-size: medium;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: lighten($dm-surface, 10%) !important;
+                    box-shadow: 0 0 12px $dm-text !important;
+                    color: $dm-text !important;
+                }
+            }
+
+            .btn-secondary {
+                order: 1;
+                display: inline-block !important;
+                background: transparent !important;
+                border: 1px solid $color-border-cyber !important;
+                color: $text-muted-light !important;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+}

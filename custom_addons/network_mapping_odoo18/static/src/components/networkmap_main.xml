@@ -1,0 +1,162 @@
+<templates>
+    <t t-name="network_map_main.NetworkMapMain" owl="1">
+        <div class="nm-panel">
+            <div t-if="state.isLoading" class="cyber-loader-overlay">
+                <div class="loader-content">
+                    <div class="cyber-spinner">
+                        <div class="spinner-inner outer-ring"></div>
+                        <div class="spinner-inner inner-ring"></div>
+                        <div class="spinner-inner core"></div>
+                    </div>
+                    <div class="loader-status">
+                        <span class="glitch-text" data-text="LINKING_SYSTEM...">LINKING_SYSTEM...</span>
+                        <div class="loading-dots">
+                            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <t t-if="state.dataLoaded">
+                <div class="nm-toolbar">
+                    <h1><t t-esc="state.panelTitle"/></h1>
+                    <div class="nm-controls d-flex align-items-center gap-3">
+                    <div class="nm-theme-switch-wrapper" t-att-class="state.currentTheme === 'dark' ? 'dark-active' : ''" t-on-click="toggleTheme">
+                        <div class="theme-switch">
+                            <div class="switch-thumb">
+                                <t t-if="state.currentTheme === 'light'">☀️</t>
+                                <t t-else="">🌙</t>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                            
+                            <span class="input-group-text">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" 
+                                class="form-control form-control-sm" 
+                                placeholder="Search Port" 
+                                t-on-input="onSearchInput"
+                            />
+                        </div>
+                        <select class="form-select form-select-sm" t-on-change="onFilterStatus" t-att-value="state.filterStatus">
+                            <option value="">All Status</option>
+                            <option value="free">Free</option>
+                            <option value="used">Used</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="nm-panel-grid">
+                    <div class="nm-grid-content" style="width: fit-content; min-width: 100%;">
+                        <t t-foreach="filteredPanels" t-as="panel" t-key="panel.id">
+                            <div class="o-patch-panel-container mb-4">
+                                <div class="o-patch-panel-layout">
+                                    <div class="patch-panel-label-block" t-on-click="() => openPanelModal(panel.id)">
+                                        <div class="label-line"><strong>IP: 
+                                        <t t-if="panel.device and panel.device.ip and ['FortiSwitch', 'Fortinet'].includes(panel.device.type)">
+                                        <a t-att-href="'https://' + panel.device.ip"
+                                        target="_blank"
+                                        rel="noopener"
+                                        class="ip-link"
+                                        ><t t-esc="panel.device.ip"/></a>
+                                        </t>
+                                            <t t-else="">
+                                                <t t-esc="panel.device?.ip or ''"/>
+                                            </t>
+                                        </strong>
+                                        </div>
+                                        <div class="label small">Type: <t t-esc="panel.device?.type or ''"/></div>
+                                        <div class="label small">S/N: <t t-esc="panel.device?.serial or ''"/></div>
+                                        <div class="label-line mt-2 text-primary small"><strong>VLAN / PORT</strong></div>
+                                    </div>
+
+                                    <div class="o-patch-panel">
+                                        <div class="patch-panel-row">
+                                            <t t-foreach="panel.customRow1" t-as="port" t-key="port.num">
+                                                <div class="patch-port-group" t-att-class="{'dimmed': !isMatch(port)}">
+                                                    <div class="port-number-top-parent">
+                                                        <div class="port-number top"><t t-esc="port.num"/></div> 
+                                                    </div>
+                                                    <div class="vlan_portslot_parent">
+                                                        <button class="vlan-btn-side p-0"
+                                                            t-att-class="{'has-vlan-comment': state.vlanStatus[port.id]}"
+                                                            t-on-click.stop="() => this.openVlanModal(panel, port)"
+                                                            t-att-title="state.vlanStatus[port.id] ? 'VLAN has history' : ''">
+
+                                                        <span class="vlan-label">
+                                                            <t t-esc="(port.vlan_id || '').toString().slice(0, 2)"/>
+                                                        </span>
+
+                                                        <t t-if="state.vlanStatus[port.id]">
+                                                            <span class="comment-indicator" title="VLAN has history" aria-hidden="true"></span>
+                                                        </t>
+                                                    </button>
+                                                        <div class="port-slot" 
+                                                             t-attf-class="status-#{port.status}"
+                                                             t-att-class="{'dimmed': !isMatch(port), 'has-comment': port.has_comment}" 
+                                                             t-on-click="() => openPortModal(panel, port)">
+                                                            <t t-if="port.has_comment">
+                                                                <span class="comment-indicator" title="Port has comments"></span>
+                                                            </t>
+                                                            <span class="port-slot-label"><t t-esc="port.label or ''"/></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+
+                                        <div class="patch-panel-row row2">
+                                            <t t-foreach="panel.customRow2" t-as="port" t-key="port.num">
+                                                <div class="patch-port-group" t-att-class="{'dimmed': !isMatch(port)}">
+                                                    <div class="d-flex align-items-center">
+                                                        <button class="vlan-btn-side p-0"
+                                                            t-att-class="{'has-vlan-comment': state.vlanStatus[port.id]}"
+                                                            t-on-click.stop="() => this.openVlanModal(panel, port)"
+                                                            t-att-title="state.vlanStatus[port.id] ? 'VLAN has history' : ''">
+
+                                                        <span class="vlan-label">
+                                                            <t t-esc="(port.vlan_id || '').toString().slice(0, 2)"/>
+                                                        </span>
+
+                                                        <t t-if="state.vlanStatus[port.id]">
+                                                            <span class="comment-indicator" title="VLAN has comments" aria-hidden="true"></span>
+                                                        </t>
+                                                    </button>
+                                                        <div class="port-slot" 
+                                                             t-attf-class="status-#{port.status}"
+                                                             t-att-class="{'dimmed': !isMatch(port), 'has-comment': port.has_comment}" 
+                                                             t-on-click="() => openPortModal(panel, port)">
+                                                            <t t-if="port.has_comment">
+                                                                <span class="comment-indicator" title="Port has comments"></span>
+                                                            </t>
+                                                            <span class="port-slot-label"><t t-esc="port.label or ''"/></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="port-number-bottom-parent">
+                                                        <div class="port-number bottom"><t t-esc="port.num"/></div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t> <t t-if="state.showModal">
+                <div class="modal-backdrop fade show" style="z-index: 1040;"></div>
+                <div class="modal d-block" tabindex="-1" style="z-index: 1050;">
+                    <div class="modal-dialog modal-lg">
+                        <t t-if="state.modalType === 'port'"><PortModal t-props="state.modalProps" /></t>
+                        <t t-if="state.modalType === 'panel'"><PanelModal t-props="state.modalProps" /></t>
+                        <t t-if="state.modalType === 'vlan'"><VlanModal t-props="state.modalProps" /></t>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

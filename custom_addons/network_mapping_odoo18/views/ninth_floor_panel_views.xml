@@ -1,0 +1,24 @@
+<odoo>
+    <record id="action_ninth_floor_panel_views" model="ir.actions.client">
+            <field name="name">Patch Quest</field>
+            <field name="tag">owl.network_map_main</field>
+    </record>
+
+    <record id="patch_panel_action_9th_floor_new" model="ir.actions.client">
+        <field name="name">9th Floor</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '9th Floor', 'cab': '9th floor'}"/>
+    </record>
+
+    <record id="patch_panel_action_9th_server1_new" model="ir.actions.client">
+        <field name="name">9th Floor - Server 1</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '9th Floor', 'cab': 'Server 1'}"/> 
+    </record>
+
+    <record id="patch_panel_action_9th_server2_new" model="ir.actions.client">
+        <field name="name">9th Floor - Server 2</field>
+        <field name="tag">owl.network_map_main</field>
+        <field name="params" eval="{'floor': '9th Floor', 'cab': 'Server 2'}"/> 
+    </record>
+</odoo>

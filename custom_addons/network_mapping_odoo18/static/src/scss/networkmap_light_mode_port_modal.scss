@@ -1,0 +1,566 @@
+/* ------------------------------------------
+   LIGHT MODE — PORT MODAL
+------------------------------------------ */
+
+.light-mode {
+  .patch-quest-modal-scoped {
+    .modal-dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2010;
+      margin: 0;
+      width: 850px;
+      height:650px;
+      overflow-x:hidden;
+      overflow-y:hidden;
+      
+    .modal-content {
+      background-color: $color-bg-main-light !important;
+      border: 3px solid rgba($odoo-purple, 0.5) !important;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+      .nav.nav-tabs {
+        border-bottom: 2px solid rgba($odoo-purple, 0.5) !important;
+        padding-left: 0;
+
+        .nav-item {
+          margin-right: 5px;
+
+          .nav-link {
+            border: 2px solid rgba($odoo-purple, 0.5) !important;
+            background-color: $color-border-cyber-light !important;
+            color: $dm-text-muted !important;
+            font-family: 'Arial';
+            font-weight: bold;
+            font-size:medium;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              background-color: rgba($odoo-purple, 0.15) !important;
+              color: $dm-slot !important;
+              text-shadow: 0 0 4px rgba($odoo-purple, 0.4);
+            }
+
+            &.active {
+              font-family: 'Arial';
+              font-weight: bold;
+              background-color: rgba($odoo-purple, 0.5) !important;
+              color: $dm-slot !important;
+              border-bottom: 2px solid rgba($odoo-purple, 0.5) !important;
+              box-shadow: 0 -2px 8px rgba($odoo-purple, 0.3);
+            }
+          }
+        }
+      }
+      .close{       
+          position: absolute;
+          top: 12px;
+          right: 12px;
+
+          background: transparent;
+          border: none;
+
+          font-size: 1.8rem;
+          font-weight: 300;
+          line-height: 1;
+
+          color: $odoo-purple;
+          opacity: 0.6;
+          cursor: pointer;
+
+          padding: 4px;
+          z-index: 5;
+          transition: all 0.2s ease;
+
+          &:hover {
+            opacity: 1;
+            transform: scale(1.15);
+            text-shadow: 0 0 8px rgba($odoo-purple, 0.4);
+          }
+        }
+        .nm-modal-header {
+      background: $color-bg-main-light !important;
+      border: none ;
+    }
+        .modal-body {
+        padding: 10px;
+        background-color: $color-bg-main-light !important;
+        overflow-x:auto;
+        overflow-y:scroll;
+        scrollbar-width: thin;
+        scrollbar-color: rgba($odoo-purple, 0.3) #f1f1f1 !important;
+      
+        &::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1 !important;
+          border-left: 1px solid rgba($odoo-purple, 0.1) !important;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba($odoo-purple, 0.3) !important;
+          border-radius: 4px;
+          border: 2px solid #f1f1f1 !important;
+
+          &:hover {
+            background: $odoo-purple !important;
+            box-shadow: 0 0 10px $odoo-purple !important;
+      }
+    }
+
+      .switch-port-number{
+        color: $dm-slot !important;
+        font-size: medium;
+        text-transform: uppercase;
+      }
+
+      .patch-panel-info{
+        background-color: $color-bg-main-light !important;
+        border: none !important;
+        font-size: medium;
+        color: $dm-slot !important;
+
+        .info-child{
+          display:flex;
+          flex-wrap: nowrap;
+          align-items: center;
+
+          color: $dm-slot !important;
+          font-size:medium;
+          font-family: 'Arial';
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 5px;
+          .col-4{
+            flex: 0 0 auto;
+            width: auto;
+            min-width: 33.33%;
+            white-space: nowrap;
+            padding-right: 15px;
+            font-size: medium;
+            color: $dm-slot !important; 
+            font-family: 'Arial';
+          }
+        }
+      }
+
+      .port-vlan {
+        .port-vlan2{
+        .form-label{
+          color: $dm-slot !important;
+          font-size:medium;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 5px;
+        }
+        .input-group{
+          .form-control{
+          border-radius: 10px;
+        }
+        .input-group-text {
+          background-color: $color-bg-main-light !important;
+          border: none;
+          color: $dm-slot !important;
+        }
+        }
+        
+        .port-vlan3{
+          .form-label{
+            color: $dm-slot !important;
+            font-size:medium;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            }
+            .form-control{
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+
+      .form-label{
+        color: $dm-slot !important;
+        font-family: 'Arial';
+        font-weight: bold;
+        font-size:medium;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      .comments-activity {
+        padding: 15px;
+        background-color: $color-bg-main-light !important;
+        border: 2px solid rgba($odoo-purple, 0.5) !important;
+        border-radius: 10px;
+
+        .custom-scrollbar{
+        scrollbar-width: thin;
+        scrollbar-color: rgba($odoo-purple, 0.3) #f1f1f1 !important;
+    
+        .nm-log-item {
+                    display: flex;
+                    align-items: flex-start;
+
+                    .nm-log-text {
+                      flex:1;
+                      min-width: 0;
+                      word-break: break-word;
+                      color: $dm-slot !important;
+                      font-size: 0.9rem;
+
+                        .edit-wrapper {
+                            width: 100%;
+                            gap: 5px;
+                            display:flex;
+                            border-radius: 4px;
+                            padding: 2px;
+
+                            .edit-input {
+                              flex:1;
+                              min-height: 38px;
+                              resize: none; 
+                              word-break: break-all;
+                              white-space: pre-wrap;
+                              border: 1px solid rgba($odoo-purple, 0.3);
+                              overflow-y: auto; 
+                                
+                                &:focus {
+                                    border-color: $odoo-purple;
+                                    box-shadow: 0 0 0 0.2rem rgba($odoo-purple, 0.1);
+                                }
+                            }
+
+                            .edit-actions {
+                                align-self:center;
+                                .btn-save {
+                                  color: $odoo-purple !important;
+                                  background: transparent;
+                                  border: none;
+                                  padding: 0;
+                                  margin-left: 10px;
+                                  flex-shrink:0;
+                                  font-family: 'Arial' !important;
+                                  font-size: 0.9rem !important;
+                                  letter-spacing: 1px;
+                                  text-transform: uppercase;
+                                  cursor: pointer;
+
+                              }
+                            }
+                        }
+
+                        /* THE EDIT BUTTON */
+                        .btn-edit {
+                            color: $color-bg-main-light !important; /* Default State */
+                            background: transparent;
+                            border: none;
+                            padding: 0;
+                            margin-left: 10px;
+                            flex-shrink:0;
+                            font-family: 'Arial' !important;
+                            font-size: 0.9rem !important;
+                            letter-spacing: 1px;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: $odoo-purple !important; /* Hover State */
+                                text-decoration: none;
+                            }
+                        }
+
+                    }
+                  }
+        }
+      }
+    
+        &::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1 !important;
+          border-left: 1px solid rgba($odoo-purple, 0.1) !important;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba($odoo-purple, 0.3) !important;
+          border-radius: 4px;
+          border: 2px solid #f1f1f1 !important;
+
+          &:hover {
+            background: $odoo-purple !important;
+            box-shadow: 0 0 10px $odoo-purple !important;
+      }
+    }  
+  }
+
+      .form-control,
+      .form-select {
+        background-color: $color-bg-main-light !important;
+        border: 2px solid $color-border-cyber-light !important;
+        color: $dm-bg-1 !important;
+        font-size: 0.9rem;
+        border-radius: 10px;
+
+        &:focus-within {
+          box-shadow: 0 0 12px $odoo-purple !important;
+          color: $dm-bg-1 !important;
+        }
+
+      }
+
+      .form-label {
+        color: $dm-slot !important;
+        font-size:medium;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+
+      .vlan-id{
+        margin-bottom: 10px;
+        background-color: $color-bg-main-light !important;
+        border: none !important;
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        min-height: 70px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        color: $dm-bg-1 !important;
+        font-size: 40px;
+        font-weight:bold;
+        font-family:'Arial';
+        display:block;
+        
+      }
+
+      select option {
+        background-color: $color-bg-surface-light;
+        color: $text-dark;
+      }
+
+      .nm-btn-primary {
+        background: $odoo-purple !important;
+        border: 1px solid $odoo-purple !important;
+        color: $dm-slot !important;
+
+        &:hover {
+          background: lighten($odoo-purple, 10%) !important;
+          box-shadow: 0 0 12px $odoo-purple !important;
+          color: $dm-text !important;
+        }
+      }
+
+      .btn-outline-secondary {
+        border: 1px solid $color-border-cyber-light !important;
+
+        &:hover {
+          background: $color-bg-surface-light !important;
+          color: $text-dark !important;
+        }
+      }
+      &::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-left: 1px solid rgba($odoo-purple, 0.1);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba($odoo-purple, 0.3);
+          border-radius: 4px;
+          border: 2px solid #f1f1f1;
+
+          &:hover {
+            background: $odoo-purple;
+            box-shadow: 0 0 10px $odoo-purple;
+      }
+    }
+
+.workstation-tab {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+  .form-control{
+      border-radius: 10px;
+    }
+  .history-preview {
+    margin-top: 1rem;
+
+    .form-label {
+      transition: all 0.3s ease;
+      color: $odoo-purple !important; 
+      position: relative;
+      padding-left: 15px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: $odoo-purple;
+        border-radius: 50%;
+        box-shadow: 0 0 8px $odoo-purple;
+      }
+    }
+
+    
+
+    .comments-activity {
+    .custom-scrollbar {
+      padding: 15px;
+      background-color: $color-bg-main-light !important;
+      border: 2px solid rgba($odoo-purple, 0.5) !important;
+      border-radius: 10px;
+      margin-top: 5px;
+
+       .nm-log-text {
+        display: block; 
+        width: 100%;
+        color: $dm-slot !important; 
+
+        .log-date {
+            font-size: 0.9rem;
+            font-family: 'Arial';
+            color: $dm-slot !important; 
+        }
+        
+        .log-user {
+            font-weight: bold;
+        }
+
+        .log-content {
+            font-style: italic;
+            color: $dm-slot !important;
+        }
+
+        .separator {
+            margin: 0 5px;
+            color: #888;
+        }
+
+        
+    }  
+    .btn-edit {
+        color: $color-bg-main-light !important; 
+        font-family: 'Arial' !important;
+        font-size: small !important;
+        letter-spacing: 1px;
+        background: transparent;
+        border: none;
+        transition: all 0.2s ease-in-click-out;
+        cursor: pointer;
+
+        &:hover {
+            color: $odoo-purple !important; /* Color on hover */
+            text-decoration: none;
+            transform: scale(1.05);
+
+        }
+    }
+      .border-start {
+        border-color: rgba($odoo-purple, 0.5) !important;
+        background: rgba($odoo-purple, 0.03);
+        border-radius: 0 4px 4px 0;
+        
+        strong {
+          color: $dm-slot !important;
+          font-family: 'Arial';
+        }
+
+        .text.small {
+          color: $dm-slot !important;
+          font-style: italic;
+        }
+
+        .badge.bg-light {
+          background-color: rgba($odoo-purple, 0.1) !important;
+          color: $odoo-purple !important;
+          border: 1px solid rgba($odoo-purple, 0.2) !important;
+        }
+      }
+
+     &::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1 !important;
+          border-left: 1px solid rgba($odoo-purple, 0.1) !important;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba($odoo-purple, 0.3) !important;
+          border-radius: 4px;
+          border: 2px solid #f1f1f1 !important;
+
+          &:hover {
+            background: $odoo-purple !important;
+            box-shadow: 0 0 10px $odoo-purple !important;
+      }
+    }  
+    }
+    }
+    
+  }
+}
+    }
+    }
+      }
+
+    
+
+    
+    
+
+    .modal-footer {
+      background-color: $color-bg-main-light !important;
+      border: none !important;
+
+      .nm-btn-primary {
+        background: $odoo-purple !important;
+        border: 1px solid $odoo-purple !important;
+        color: $dm-slot !important;
+
+        &:hover {
+          background: lighten($odoo-purple, 10%) !important; 
+          box-shadow: 0 0 12px $odoo-purple !important;
+          color: $dm-text !important;
+        }
+      }
+
+      .btn-outline-secondary {
+        border: 1px solid $color-border-cyber-light !important;
+
+        &:hover {
+          background: $color-bg-main-light !important;
+          color: $dm-bg-1 !important;
+        }
+      }
+    }
+
+    &.d-block {
+      display: block;
+    }
+  }

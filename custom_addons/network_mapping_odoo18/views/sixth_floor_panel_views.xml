@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="action_sixth_floor_panel_views" model="ir.actions.client">
+            <field name="name">Patch Panels Trial</field>
+            <field name="tag">owl.network_map_main</field>
+        </record>
+
+        <record id="patch_panel_action_6th_cab1_new" model="ir.actions.client">
+            <field name="name">6th Floor - CAB1</field>
+            <field name="tag">owl.network_map_main</field>
+            <field name="params" eval="{'floor': '6th Floor', 'cab': 'CAB1'}"/> 
+            </record>
+            
+        <record id="patch_panel_action_6th_cab2_new" model="ir.actions.client">
+            <field name="name">6th Floor - CAB2</field>
+            <field name="tag">owl.network_map_main</field> 
+            <field name="params" eval="{'floor': '6th Floor', 'cab': 'CAB2'}"/>
+        </record>
+    </data>
+</odoo>

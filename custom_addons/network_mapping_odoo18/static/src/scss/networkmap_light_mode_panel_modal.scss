@@ -1,0 +1,130 @@
+/* ------------------------------------------
+   LIGHT MODE — PANEL MODAL
+------------------------------------------ */
+
+.light-mode {
+  .nm-panel-modal {
+    .modal-dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2010;
+      margin: 0;
+      width: 850px;
+      height:650px;
+      overflow-x:hidden;
+      overflow-y:hidden;
+      }
+
+    .modal-content {
+      background-color: $color-bg-main-light !important;
+      border: 3px solid rgba($odoo-purple, 0.8) !important;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+
+    }
+      .nm-panel-modal-header {
+      border-bottom: 2px solid rgba($odoo-purple, 0.5) !important;
+      .form-label{
+        color: $dm-slot !important;
+        font-family: 'Arial';
+        font-weight: bold;
+        font-size:medium;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .close{       
+          position: absolute;
+          top: 12px;
+          right: 12px;
+
+          background: transparent;
+          border: none;
+
+          font-size: 1.8rem;
+          font-weight: 300;
+          line-height: 1;
+
+          color: $odoo-purple !important;
+          opacity: 0.6;
+          cursor: pointer;
+
+          padding: 4px;
+          z-index: 5;
+          transition: all 0.2s ease;
+
+          &:hover {
+            opacity: 1;
+            transform: scale(1.15);
+            text-shadow: 0 0 8px rgba($odoo-purple, 0.4) !important;
+          }
+        }
+    }
+
+    .nm-panel-modal-body {
+      padding: 10px;
+      background-color: $color-bg-main-light !important;
+      overflow-x:hidden;
+      overflow-y:hidden;
+
+      .form-label{
+        color: $dm-slot !important;
+        font-family: 'Arial';
+        font-weight: bold;
+        font-size:medium;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      .form-control {
+        background-color: $color-bg-main-light !important;
+        border: 2px solid $color-border-cyber-light !important;
+        color: $dm-bg-1 !important;
+        font-size: 0.9rem;
+        border-radius: 10px;
+
+        &:focus-within {
+          box-shadow: 0 0 12px $odoo-purple !important;
+          color: $dm-bg-1 !important;
+        }
+      }
+
+    }
+    
+    
+
+    .modal-footer {
+      background-color: $color-bg-main-light !important;
+      border: none !important;
+
+      .nm-btn-primary {
+        background: $odoo-purple !important;
+        border: 1px solid $odoo-purple !important;
+        color: $dm-slot !important;
+
+        &:hover {
+          background: lighten($odoo-purple, 10%) !important; 
+          box-shadow: 0 0 12px $odoo-purple !important;
+          color: $dm-text !important;
+        }
+      }
+
+      .nm-btn-secondary {
+        border: 1px solid $color-border-cyber-light !important;
+
+        &:hover {
+          background: $color-bg-main-light !important;
+          color: $dm-bg-1 !important;
+        }
+      }
+    }
+
+    &.d-block {
+      display: block;
+    }
+  }
+  
+}

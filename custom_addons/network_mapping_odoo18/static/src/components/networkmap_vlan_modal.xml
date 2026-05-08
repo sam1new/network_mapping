@@ -1,0 +1,62 @@
+<t t-name="network_map_main.VlanModal" owl="1">
+    <div class="modal d-block patch-quest-modal-scoped" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content border-3">
+                <div class="modal-body" style="overflow-y:hidden;">
+                    <div class="nm-modal-header">
+                        <div class="form-group">
+                            <label class="form-label">VLAN ID</label>
+                            <div class="vlan-id-container">
+                                <input type="text" t-model="state.vlanId" class="vlan-id" disabled="disabled"/>
+                            </div>
+                        </div>
+                        <button type="button" class="close" t-on-click="props.close" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+                    <div>
+                         <div class="history-preview">
+                        <h6 t-attf-class="recent-activity mb-2 form-label ">
+                            RECENT ACTIVITY
+                        </h6>
+                        
+                        <div class="comments-activity"> 
+                            <div class="custom-scrollbar" style="max-height: 150px; overflow-y: auto;">
+                                <t t-if="recentHistory.length > 0">
+                                    <t t-foreach="recentHistory" t-as="log" t-key="log.id || log_index">
+                                        <div class="log-line d-flex align-items-center nm-log-item mb-1">
+                                            <div class="log-line-child nm-log-text">
+                                                <span class="log-date">
+                                                    <t t-esc="(log.date || '').replace('T',' ').slice(0,16)"/>
+                                                </span>
+                                                <span class="separator">|</span>
+                                                
+                                                <span class="log-user">
+                                                    <strong><t t-esc="log.user_name"/></strong>
+                                                </span>
+                                                <span class="separator">:</span>
+                                                
+                                                <span class="log-content">
+                                                    <i><t t-esc="log.comment_text"/></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <div class="small p-2 text-muted">[ No VLAN changes detected. ]</div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn nm-btn-primary" t-on-click="props.close" t-att-disabled="state.saving">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>

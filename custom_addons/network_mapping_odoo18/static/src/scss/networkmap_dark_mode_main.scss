@@ -1,0 +1,693 @@
+/* === Dark Mode Palette  === */
+$dm-bg-1:            #262626; 
+$dm-surface:         #363636; 
+$dm-slot:            #5a5a5a; 
+$dm-slot-darker:     #4a4a4a; 
+$dm-border-strong:   #ffffff; 
+$dm-text:            #e5e7eb;
+$dm-text-muted:      #c7cbd1;
+
+$light-bg-workspace: #f0f0f0 !default;
+$light-grid-color: rgba(0, 0, 0, 0.05) !default;
+$light-border: #000000 !default;
+
+$color-bg-main:      $dm-bg-1;        
+$color-bg-surface:   $dm-surface;     
+$color-border-cyber: #4a4a4a;         
+
+
+
+  body.networkmap_body:not(.light-mode){
+    .o_navbar,
+    .o_main_navbar {
+        background-color: $dm-bg-1 ;
+        border-bottom: none ;
+        box-shadow: none ;
+    }
+ 
+    .o_menu_sections {
+        .o_nav_entry,
+        .o-dropdown-item,
+        .dropdown-item,
+        button.o-dropdown.dropdown-toggle {
+            color: $dm-text ;
+            background-color: $dm-bg-1;
+ 
+            &:hover,
+            &:focus,
+            &:active,
+            &.active {
+                color: $dm-text ;
+                background-color:$dm-bg-1;
+            }
+        }
+    }
+  
+  .o_action_manager:has(.nm-panel) {
+  .o_content:has(.nm-panel) {
+    background-color: $dm-bg-1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.nm-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: $dm-bg-1;
+}
+
+.cyber-loader-overlay {
+  background-color: $dm-bg-1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.nm-panel-grid {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: $dm-bg-1;
+  border: none;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 20px;
+
+  
+ &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $dm-bg-1;
+    /* optional: subtle inner edge line for depth */
+    border-left: 1px solid rgba($dm-text, 0.12);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($dm-text, 0.35);
+    border: 2px solid $dm-bg-1;
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba($dm-text, 0.25);
+
+    &:hover {
+      background: $dm-text;
+      box-shadow: 0 0 10px rgba($dm-text, 0.8);
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: $dm-text;
+  }
+
+}
+
+/* --- Toolbar --- */
+
+.nm-toolbar {
+  flex: 0 0 auto;
+  padding: 15px 20px;
+  background-color: $dm-surface;
+  border-bottom: 1px solid $color-border-cyber;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-radius: 10px;
+
+  h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: $dm-text;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+  padding: 2px 0;
+}
+
+  .nm-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nm-theme-switch-wrapper {
+    .theme-switch {
+      margin-bottom: 0;
+    }
+  }
+
+  .input-group {
+    height: 34px;
+    border: 1px solid $dm-text;
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease;
+    &:focus-within {
+      box-shadow: 0 0 15px rgba($dm-text, 0.6);
+      border-color: lighten($dm-text, 10%);
+    }
+
+    .input-group-text {
+      background-color: $dm-surface;
+      border: none;
+      color: $dm-text-muted;
+    }
+  }
+
+  input.form-control {
+    background-color: $dm-surface;
+    color: $dm-text;
+    border: none;
+    caret-color: $dm-text;
+
+    &::placeholder {
+      color: rgba($dm-text-muted, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      color: $dm-text;
+    }
+  }
+
+ .form-select {
+  height: 34px;
+  width: 220px;
+  padding: 5px 10px;
+  border: 1px solid $dm-text;
+  border-radius: 6px;
+  background-color: $dm-surface;
+  cursor: pointer;
+  caret-color: $dm-text;
+  transition: color 120ms ease, box-shadow 120ms ease;
+
+  /* DEFAULT STATE: muted (for both placeholder and selected values) */
+  color: $dm-text-muted;.form-select {
+  color: $dm-text-muted;  /* default muted */
+  &:focus,
+  &:active,
+  &:focus-visible { color: $dm-text; }
+  &:has(option[value=""]:checked) { color: $dm-text; }
+  &:not(:focus):has(option[value]:checked) { color: $dm-text; } 
+}
+
+  &:focus,
+  &:active,
+  &:focus-visible {
+    outline: none;
+    color: $dm-text;              // <‑‑ bright color ONLY while choosing
+    box-shadow: 0 0 10px $dm-text;
+  }
+
+  /* Dropdown list items */
+  option {
+    color: $dm-bg-1;              // <‑‑ items in the list use bright color
+  }
+}
+}
+
+/* --- Panel Container (Wrapper for Device Info + Ports) --- */
+
+.o-patch-panel-layout {
+  display: inline-flex;   
+  align-items: stretch;
+  width: max-content;
+  gap: 0;
+  border: 1px solid $color-border-cyber;
+  background-color: $dm-surface;
+  box-shadow: none;
+  border-radius: 6px;
+}
+
+/* --- Device Info (Left Block) --- */
+
+.patch-panel-label-block {
+  flex: 0 0 150px;
+  background-color: $dm-surface;
+  border-right: 1px solid $color-border-cyber;
+  padding: 15px;
+  border-radius: 6px 0 0 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+  background: $dm-surface repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 3px
+  );
+
+  &:hover {
+    background: darken($dm-surface, 3%) ;
+    border-color: $color-border-cyber;
+    box-shadow: none;
+    z-index: 5;
+  }
+
+  .label-line {
+    margin-bottom: 5px;
+    strong {
+      color: $dm-text;
+    }
+    .ip-link {
+  color: inherit;
+  text-decoration: none;
+  }
+  .ip-link:hover {
+    text-decoration: underline;
+    color: var(--bs-primary,#bd67c9);
+  }
+  }
+
+  .label{
+    color: $dm-text;
+  }
+
+  .form-group {
+    color: $neon-blue;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+}
+
+/* --- Port Grid --- */
+
+.o-patch-panel {
+    flex: 0 0 auto;     
+    width: max-content;
+    padding: 15px;
+}
+
+/* --- Port Row --- */
+
+.patch-panel-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+/* --- Port Group --- */
+
+.patch-port-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 100px;
+  width: 100px;
+  padding: 0 5px; 
+
+  .port-number {
+    font-weight: bold;
+    color: $neon-blue;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  &:first-child {
+    .port-number.top {
+      margin-bottom: 5px;
+    }
+  }
+
+  .port-number.bottom {
+    margin-top: 5px; 
+    margin-bottom: 0; 
+  }
+}
+
+.vlan_portslot_parent {
+  gap: 0;
+  display: flex; 
+  align-items: center;
+  width: 100%; 
+  box-sizing: border-box ;
+}
+
+.port-slot {
+  position: relative;            
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 35px;
+  min-width: 60px;
+  flex: 1;
+  background-color: $dm-slot;
+  border-radius: 0 3px 3px 0;
+  border: 1px solid $color-border-cyber;
+  font-size: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0 4px;
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+
+  background: $dm-surface repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 3px
+  );
+
+  &:hover {
+    background: rgba(229, 231, 235, 0.15); 
+    box-shadow: -2px 0 15px rgba(229, 231, 235, 0.3); 
+    border-right: 1px solid #e5e7eb;
+  }
+
+  .comment-indicator {
+    position: absolute;
+    top: 3px;              
+    right: 3px;          
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;     
+
+
+    background: rgba(229, 231, 235, 0.18); 
+    border: 2px solid #e5e7eb;
+    box-shadow: 0 0 10px rgba(229, 231, 235, 0.45);
+    text-shadow: none;
+
+    pointer-events: none;   
+  }
+}
+
+.port-slot-label {
+  font-weight: normal;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  display: block;
+  margin-left: 2px;
+  padding-right: 12px; 
+}
+
+.port-slot.has-comment {
+  color: #ffffff;
+  background: rgba(229, 231, 235, 0.12);
+  box-shadow: 0 0 10px rgba(229, 231, 235, 0.25);
+  text-shadow: none;
+
+  &:hover {
+    background: rgba(229, 231, 235, 0.25); 
+    box-shadow: -2px 0 15px rgba(229, 231, 235, 0.4);
+    border-right: 1px solid #e5e7eb;
+  }
+
+  .port-slot-label {
+    color: #fff;
+  }
+}
+
+
+.dimmed {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.port-number-top-parent,
+.port-number-bottom-parent {
+  box-sizing: border-box;
+  background: $dm-bg-1;
+  border: 1px solid $dm-border-strong ;
+  box-shadow: none;
+  color: $dm-text;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 3px;
+}
+
+
+.vlan-btn-side {
+  width: 35px;
+  height: 35px;
+  border-radius: 3px 0 0 3px;
+  border-right: none;
+  box-sizing: border-box;
+  background-color: $dm-bg-1;
+  text-shadow: none;
+
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  position: relative;           
+  display: grid;               
+  place-items: center;        
+  padding: 0;                  
+  line-height: normal;          
+  overflow: hidden;           
+
+  &:hover {
+    background: rgba(229, 231, 235, 0.15); 
+    box-shadow: -2px 0 15px rgba(229, 231, 235, 0.3);
+    border-right: 1px solid #e5e7eb;
+    z-index: 5;
+  }
+}
+
+.vlan-label {
+  font-size: 0.65rem;
+  color: $dm-text;
+}
+
+.vlan-btn-side .comment-indicator {
+  position: absolute;
+  top: 3px;           
+  right: 3px;          
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;   
+
+  background: rgba(229, 231, 235, 0.18); 
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 0 10px rgba(229, 231, 235, 0.45);
+  pointer-events: none;
+}
+
+.vlan-btn-side.has-vlan-comment {
+  box-shadow: 0 0 8px rgba(229, 231, 235, 0.35);
+}
+
+
+
+.patch-port-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px; 
+  flex: 0 0 110px;
+  padding: 0 2px; 
+  box-sizing: border-box ;
+
+  .d-flex.align-items-center {
+    width: 100%;
+    display: flex;
+    gap: 0 ;
+    flex-wrap: nowrap;
+  }
+
+  .port-number {
+    font-weight: bold;
+    color: $dm-text;
+    font-size: 12px;
+  }
+}
+
+.patch-port-group.dimmed {
+  opacity: 0.3;
+  filter: grayscale(0.8);
+  pointer-events: none; 
+}
+.nm-btn-primary {
+  background-color: transparent ;
+  border: 1px solid $dm-text;
+  color: $neon-blue ;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: $dm-text ;
+    color: $dm-bg-1 ;
+    box-shadow: 0 0 15px $dm-text;
+  }
+
+  &:disabled {
+    border-color: $dm-bg-1 ;
+    color: $dm-text-muted ;
+    opacity: 0.6;
+  }
+}
+
+/* --- Cyberpunk Loading Icon --- */
+
+.cyber-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color-bg-main, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+  color:  #e5e7eb ;
+  font-family: 'Arial';
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba( #e5e7eb , 0.5);
+  position: relative;
+}
+
+/* The Spinner */
+.cyber-spinner {
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  .spinner-inner {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+
+  .outer-ring {
+    width: 100%;
+    height: 100%;
+    border-top-color:  #e5e7eb;
+    border-bottom-color:  #e5e7eb;
+    animation: spin-clockwise 1.5s linear infinite;
+    box-shadow: 0 0 15px rgba( #e5e7eb, 0.5);
+  }
+
+  .inner-ring {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    border-left-color: #bd67c9;
+    border-right-color: #bd67c9;
+    animation: spin-counter-clockwise 1s linear infinite;
+    box-shadow: 0 0 10px rgba(#bd67c9, 0.5);
+  }
+
+  .core {
+    width: 10px;
+    height: 10px;
+    top: 45%;
+    left: 45%;
+    background-color: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 30px #e5e7eb;
+    animation: pulse 1s ease-in-out infinite;
+  }
+}
+
+/* --- Cyber-Switch Toggle --- */
+.nm-theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .theme-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: $dm-text; 
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    border: 1px solid $dm-text; 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+    .switch-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  }
+
+  &.dark-active {
+    .theme-switch {
+      background: $dm-bg-1;
+      border: 1px solid $dm-surface;
+    }
+    .switch-thumb {
+      transform: translateX(30px);
+      background: #0d1117;
+    }
+  }
+}
+
+/* Animations */
+@keyframes spin-clockwise {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-counter-clockwise {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(10px, 9999px, 20px, 0); }
+  10% { clip: rect(30px, 9999px, 40px, 0); }
+}
+}
+
